@@ -1,22 +1,55 @@
 import MovieCard from "../components/MovieCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { searchMovies, getPopularMovies } from "../services/api";
 import '../css/Home.css'
 
 function Home() {
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [movies, setmovies] = useState ([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
 
-  const movies = [
-    { id: 1, title: "The Shawshank Redemption", release_date: "1994" },
-    { id: 2, title: "The Godfather", release_date: "1972" },
-    { id: 3, title: "The Dark Knight", release_date: "2008" },
-    { id: 5, title: "Forrest Gump", release_date: "1994" },
-  ];
+  useEffect(() => {
 
-  const handleSearch = (e) => {
+    const loadPopularMovies = async () => {
+      try {
+        const popularMovies = await getPopularMovies()
+        setmovies(popularMovies)
+    }catch (error) {
+      console.log(error)
+      setError("Failed to load popular...")
+    }
+    finally{
+      setLoading(false)
+    }
+  }
+  loadPopularMovies()
+
+  },[])
+
+  const handleSearch = async(e) => {
     e.preventDefault();
-    alert(searchQuery);
+
+    if (!searchQuery.trim()) return
+    if (loading) return
+
+    setLoading(true);
+    try {
+      const searchResults = await searchMovies(searchQuery);
+      setmovies(searchResults)
+      setError(null)
+    }
+      catch (error) {
+        console.log(error)
+        setError("Failed to search movies...")
+      }
+      finally{
+        setLoading(false)
+      }
+
+    
     setSearchQuery("");
   };
 
@@ -38,13 +71,20 @@ function Home() {
         </button>
       </form>
 
-      <div className="movie-grid">
+      {error && <div className="error">{error}</div>}
+
+      {loading ? (
+        <div className= "loading">Loading...</div>
+      ):(
+        <div className="movie-grid">
         {movies.map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>
-    </div>
-  );
+     
+  )}
+  </div>
+);
 }
 
 export default Home;
