@@ -1,7 +1,11 @@
+import "../css/Favourites.css"
+
 function Favourites() {
   return ( <div className= "favourites">
-    <h2>Favourites Yet</h2>
-    <p>Start adding your favourite movies! </p>
+    <h2>No Favourites Movies Yet</h2>
+    <p>Start adding movies to your favourites and they will appear here!
+      
+    </p>
 
   </div> 
   );

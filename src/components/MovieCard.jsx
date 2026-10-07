@@ -1,11 +1,12 @@
+import "../css/MovieCard.css"
 
-function MovieCard({ movie }) {
+function MovieCard({movie}) {
 
   function onFavouriteClick() {
     alert("clicked")
   }
 
-  return 
+  return (
   <div className= "movie-card">
     <div className="movie-poster">
       <img src={movie.url} alt={movie.title} />
@@ -23,6 +24,7 @@ function MovieCard({ movie }) {
 
 
   </div>
+  );
 }
 
 export default MovieCard;
