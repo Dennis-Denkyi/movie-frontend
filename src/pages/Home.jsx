@@ -20,6 +20,9 @@ function Home() {
   };
 
   return (
+   
+
+
     <div className="home">
       <form onSubmit={handleSearch} className="search-form">
         <input
