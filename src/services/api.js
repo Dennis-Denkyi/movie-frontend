@@ -1,4 +1,4 @@
-const API_URL = "YOUR_TMDB_API_KEY"
+const API_URL = ""
 const BASE_URL = "https://api.themoviedb.org/3"
 
 export const getPopularMovies = async() => {
