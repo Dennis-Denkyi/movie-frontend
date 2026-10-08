@@ -62,7 +62,7 @@ function Home() {
         <input
           type="text"
           placeholder="Search for a movie..."
-          classsName="search-input"
+          className="search-input"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
