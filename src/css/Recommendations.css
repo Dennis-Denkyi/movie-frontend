@@ -1,0 +1,28 @@
+.recommendations {
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.recommendations h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--heading);
+  text-shadow: var(--heading-shadow);
+}
+
+.recommendations-subtitle {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 639px) {
+  .recommendations {
+    padding: 1rem 0;
+  }
+
+  .recommendations h2 {
+    font-size: 1.8rem;
+  }
+}

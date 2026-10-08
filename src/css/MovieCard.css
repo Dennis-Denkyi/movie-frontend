@@ -131,3 +131,9 @@
   background-color: var(--no-poster-bg);
   color: var(--no-poster-text);
 }
+
+.movie-info .movie-note {
+  color: #e50914;
+  font-size: 0.8rem;
+  font-weight: 500;
+}

@@ -1,7 +1,7 @@
 import "../css/MovieCard.css";
 import { useMovieContext } from "../contexts/MovieContext";
 
-function MovieCard({ movie }) {
+function MovieCard({ movie, note }) {
   const { addToFavourites, removeFromFavourites, isFavourite } = useMovieContext();
   const favourite = isFavourite(movie.id);
 
@@ -31,6 +31,7 @@ function MovieCard({ movie }) {
       <div className="movie-info">
         <h3>{movie.title}</h3>
         <p>{movie.release_date?.split("-")[0]}</p>
+        {note && <p className="movie-note">{note}</p>}
       </div>
     </div>
   );

@@ -36,3 +36,21 @@ export const searchMovies = (query, signal) =>
     signal,
     "Failed to search movies"
   );
+
+export const getRecommendations = async (movieId, signal) => {
+  const recommendations = await fetchResults(
+    `recommendations:${movieId}`,
+    `${BASE_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}`,
+    signal,
+    "Failed to fetch recommendations"
+  );
+  if (recommendations.length > 0) return recommendations;
+
+  // Less popular movies often have no recommendations; similar movies is a decent fallback.
+  return fetchResults(
+    `similar:${movieId}`,
+    `${BASE_URL}/movie/${movieId}/similar?api_key=${API_KEY}`,
+    signal,
+    "Failed to fetch similar movies"
+  );
+};
