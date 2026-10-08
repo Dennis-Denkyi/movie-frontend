@@ -61,3 +61,13 @@
   width: 100%;
   box-sizing: border-box;
 }
+.movies-grid.stale {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.no-results {
+  text-align: center;
+  color: var(--muted);
+  padding: 2rem 1rem;
+}
