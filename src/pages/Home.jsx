@@ -6,7 +6,7 @@ import '../css/Home.css'
 function Home() {
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [movies, setmovies] = useState ([]);
+  const [movies, setMovies] = useState ([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -16,10 +16,10 @@ function Home() {
     const loadPopularMovies = async () => {
       try {
         const popularMovies = await getPopularMovies()
-        setmovies(popularMovies)
+        setMovies(popularMovies)
     }catch (error) {
       console.log(error)
-      setError("Failed to load popular...")
+      setError("Failed to load popular movies...")
     }
     finally{
       setLoading(false)
@@ -38,7 +38,7 @@ function Home() {
     setLoading(true);
     try {
       const searchResults = await searchMovies(searchQuery);
-      setmovies(searchResults)
+      setMovies(searchResults)
       setError(null)
     }
       catch (error) {
