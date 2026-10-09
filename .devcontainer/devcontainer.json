@@ -1,0 +1,22 @@
+{
+  "name": "movie-frontend",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+
+  // Keep the container's Linux node_modules separate from the Mac's,
+  // so native build tools (esbuild, rollup) don't break on either side.
+  "mounts": [
+    "source=movie-frontend-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+  "postCreateCommand": "sudo chown node node_modules && npm ci",
+
+  "forwardPorts": [5173],
+  "portsAttributes": {
+    "5173": { "label": "Vite dev server", "onAutoForward": "openBrowser" }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "vitest.explorer"]
+    }
+  }
+}
