@@ -15,7 +15,7 @@ describe("MovieCard user score", () => {
     [5.5, "55", "mid"],
     [4.0, "40", "mid"],
     [3.0, "30", "low"],
-  ])("shows %s as %s%% with the %s colour", (vote_average, text, level) => {
+  ])("shows %s as %s percent with the %s colour", (vote_average, text, level) => {
     renderCard({ vote_average });
 
     const badge = screen.getByLabelText(`User score ${text} percent`);
